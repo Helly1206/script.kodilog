@@ -27,11 +27,11 @@ BUTTON_EXIT  = 50
 LABEL_TITLE  = 60
 
 CANCEL_DIALOG = (9, 10, 216, 247, 257, 275, 61448, 61467)
-FIELD_LINES = 39
+FIELD_LINES = 38
 SCROLL_LINES = FIELD_LINES - 2
 UPDATE_TIME = 0.1
 
-LOGFILE = "/home/helly/.kodi/temp/kodi.log"
+LOGFILE = xbmc.translatePath(os.path.join('special://temp/', 'kodi.log'))
 
 class RepeatedTimer(object):
     def __init__(self, interval, function, *args, **kwargs):
@@ -107,11 +107,13 @@ class GUI(xbmcgui.WindowXMLDialog):
         retstr = ""
         cnt = 0
         while cnt<len(block): 
+            data=block[cnt].strip('\n')
+            line=(data[:160] + '..') if len(data) > 160 else data
             if startgrey and cnt<2:
                 retstr="%s[COLOR=FF999999]"%retstr
             elif endgrey and (cnt>FIELD_LINES-3):
                 retstr="%s[COLOR=FF999999]"%retstr
-            retstr=("%s%s"%(retstr,block[cnt].strip('\n')))
+            retstr=("%s%s"%(retstr,line))
             if startgrey and cnt<2:
                 retstr="%s[/COLOR]"%retstr
             elif endgrey and (cnt>FIELD_LINES-3):
