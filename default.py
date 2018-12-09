@@ -6,6 +6,7 @@
 #########################################################
 
 ####################### IMPORTS #########################
+from builtins import object
 import sys, os
 import xbmc, xbmcaddon, xbmcgui
 from threading import Timer
@@ -175,7 +176,8 @@ class GUI(xbmcgui.WindowXMLDialog):
 #########################################################
 ######################## MAIN ###########################
 #########################################################
-ui = GUI("%s.xml" % __addonname__.replace(".","-") , __addonpath__, "Default")
+__gui_type = "Classic" if __addon__.getSetting('gui_type').upper() == 'CLASSIC' else "Default"
+ui = GUI("%s.xml" % __addonname__.replace(".","-") , __addonpath__, __gui_type)
 ui.doModal()
 del ui
 
