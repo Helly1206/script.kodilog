@@ -6,7 +6,6 @@
 #########################################################
 
 ####################### IMPORTS #########################
-from builtins import object
 import sys, os
 import xbmc, xbmcaddon, xbmcgui
 from threading import Timer
