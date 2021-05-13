@@ -8,6 +8,7 @@
 ####################### IMPORTS #########################
 import sys, os
 import xbmc, xbmcaddon, xbmcgui
+import xbmcvfs
 from threading import Timer
 
 #########################################################
@@ -31,7 +32,7 @@ FIELD_LINES = 38
 SCROLL_LINES = FIELD_LINES - 2
 UPDATE_TIME = 0.1
 
-LOGFILE = xbmc.translatePath(os.path.join('special://temp/', 'kodi.log'))
+LOGFILE = xbmcvfs.translatePath(os.path.join('special://temp/', 'kodi.log'))
 
 class RepeatedTimer(object):
     def __init__(self, interval, function, *args, **kwargs):
